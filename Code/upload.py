@@ -114,8 +114,8 @@ def Send_out_files():
 def Upload_Single_File():
 	fromaddr = "automationtestdmf@gmail.com"
 	toaddr = "automationtestdmf@gmail.com"
-	toaddr2 = "joshfeuerman@gmail.com"
-	toaddr3 = "pftrading17@gmail.com"
+	#toaddr2 = "joshfeuerman@gmail.com"
+	#toaddr3 = "pftrading17@gmail.com"
 
 	# instance of MIMEMultipart
 	msg = MIMEMultipart()
@@ -164,14 +164,14 @@ def Upload_Single_File():
 
 	# sending the mail
 	s.sendmail(fromaddr, toaddr, text)
-	s.sendmail(fromaddr, toaddr2, text)
-	s.sendmail(fromaddr, toaddr3, text)
+	#s.sendmail(fromaddr, toaddr2, text)
+	#s.sendmail(fromaddr, toaddr3, text)
 
 	# terminating the session
 	s.quit()
 
 def main():
-	#Send_Sorted_Data()
+	Send_Sorted_Data()
 	Send_out_files()
 	Upload_Single_File()
 

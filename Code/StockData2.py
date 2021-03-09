@@ -42,9 +42,9 @@ def Get_File():
 
 def Make_File(lists, stock_name, count):
     with open("/home/dylan/Documents/StockBot/outfiles/Stock_data.csv", "a+") as f:
-        f.write(stock_name + ',' + count + ',')
+        f.write(stock_name + ',' + count)
         for item in lists:
-             f.write(item + ",")
+             f.write("," + item)
         f.write("\n")
 
 
