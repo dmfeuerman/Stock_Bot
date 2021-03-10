@@ -4,19 +4,21 @@ import operator
 
 
 def Orginize_Data(index, out):
-    df = open("/home/dylan/Documents/StockBot/outfiles/Stock_data.csv")
+    df = open("/home/dylan/Documents/StockBot/outfiles/Stock_data.csv",
+              'r')
+    next(df)
     read_df = csv.reader(df, delimiter=',')
-    sort = sorted(read_df, key=operator.itemgetter(index), reverse=True)
+    sort = sorted(read_df, key=lambda x: float(x[index]), reverse=True)
     f = open(out, "w")
+    f.write("Stock,Count,Price,Points,Percentage\n")
     wr = csv.writer(f, dialect='excel')
     wr.writerows(sort)
     f.close()
     df.close()
 
-
 def main():
     # Stock Name
-    Orginize_Data(0, "/home/dylan/Documents/StockBot/outfiles/Sorted_data/Sorted_by_Stock_name.csv")
+    #Orginize_Data(0, "/home/dylan/Documents/StockBot/outfiles/Sorted_data/Sorted_by_Stock_name.csv")
     # Count
     Orginize_Data(1, "/home/dylan/Documents/StockBot/outfiles/Sorted_data/Sorted_by_count.csv")
     # Price

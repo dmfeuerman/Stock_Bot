@@ -35,7 +35,7 @@ def OpenSite(stock_name, count):
 def Get_File():
     file = "/home/dylan/Documents/StockBot/outfiles/Stock_data.csv"
     with open(file, "w") as f:
-        f.write("Stock,Count,Price,Points,Percentage\n")
+        f.write("")
     f.close()
     return file
 

@@ -147,10 +147,11 @@ def Get_Current_Date():
     return d1
 def Combiner():
         Create_New_CSV("/home/dylan/Documents/StockBot/Data_collection/Single_scrap.csv","/home/dylan/Documents/StockBot/outfiles/Combiner.csv")
-        Create_Final_CSV("/home/dylan/Documents/StockBot/outfiles/Combiner.csv")
+        Create_Final_CSV()
 
-def Create_Final_CSV(file):
+def Create_Final_CSV():
     word_list = []
+    file = "/home/dylan/Documents/StockBot/outfiles/Combiner.csv"
     with open(file, "r") as f:
         search = f.read().splitlines()
         for line in search:
@@ -186,6 +187,7 @@ def Future_Time(set_time):
     future = time.time() + set_time
     future = time.ctime(future)
     return future
+
 
 
 def main():
