@@ -3,6 +3,10 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
+
+COUNT_FILTER_VALUE = 40
+PRICE_FILTER_VALUE = 40
+
 def Create_New_CSV(infile1, infile2):
 
     df1 = pd.read_csv(infile1, error_bad_lines=False, low_memory=False)
@@ -11,15 +15,27 @@ def Create_New_CSV(infile1, infile2):
     merged.to_csv(infile2, index=False)
 
 def Sort_Final_Data():
-    list = CSV_To_List("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")
-    for val in list:
-        try:
-            if float(val[1]) < 20:
-                list.remove(val)
-        except ValueError:
-            continue
-    df = pd.DataFrame(list)
+    list_data = Clean_Data()
+    df = pd.DataFrame(list_data)
     df.to_csv('/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv', index=False, header=False)
+
+
+def Clean_Data():
+    list_data = CSV_To_List("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")
+    stock_list = CSV_To_List("/home/dylan/Documents/StockBot/outfiles/Stock_data.csv")
+    new_list = []
+    new_stocks = []
+    new_list.append(list_data[0])
+    for val in list_data:
+        for stock in stock_list:
+            if val[0] == stock[0]:
+                if (float(val[1]) >= COUNT_FILTER_VALUE) and (float(stock[2]) <= PRICE_FILTER_VALUE):
+                    new_list.append(val)
+                    new_stocks.append(stock)
+
+    df = pd.DataFrame(new_stocks)
+    df.to_csv('/home/dylan/Documents/StockBot/outfiles/Stock_data.csv', index=False, header=False)
+    return new_list
 
 
 def Get_Date_Time():
@@ -43,6 +59,7 @@ def Create_Final_CSV():
             except ValueError:
                 continue
     Create_Graph_Data(new_list)
+
 
 
 def Create_Graph_Data(word_list):
@@ -74,7 +91,7 @@ def CSV_To_List(Csv):
         reader = csv.reader(f)
         return list(reader)
 def main():
-    #Edit_Combinder()
+
     Create_Final_CSV()
     Create_New_CSV("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_Data.csv", "/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")
     Sort_Final_Data()
