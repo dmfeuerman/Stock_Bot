@@ -1337,7 +1337,6 @@ cone
 conn
 conx
 coo
-cool
 coop
 cop
 cor
@@ -2154,7 +2153,6 @@ flws
 flxn
 flxs
 flxt
-fly
 fmac
 fmao
 fmbh
@@ -2393,7 +2391,6 @@ gis
 gix
 gkos
 gl
-glad
 glae
 glaq
 glbl
@@ -5769,7 +5766,6 @@ tufn
 tup
 turn
 tusk
-tv
 tvac
 tvtx
 tvty

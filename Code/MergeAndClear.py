@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import date
 
-def Clear_file(files, onBool):
+def Clear_file(files):
     f = open(files, "w")
     
     f.write("Date")
@@ -15,12 +15,6 @@ def Create_New_CSV(infile1, infile2):
     return df2
 
 
-def main():
-    df = Create_New_CSV("/home/dylan/Documents/StockBot/outfiles/Combiner.csv", "/home/dylan/Documents/StockBot/outfiles/Total_data.csv")
-    #Clear_file("/home/dylan/Documents/StockBot/outfiles/Combiner.csv", True)
-    #Clear_file("/home/pi/Search/outfiles/Sorted_data/Sorted_by_count.csv", False)
-    #Clear_file("/home/pi/Search/outfiles/Sorted_data/Sorted_by_price.csv", False)
-    #Clear_file("/home/pi/Search/outfiles/Sorted_data/Sorted_by_percentage.csv", False)
-    #Clear_file("/home/pi/Search/outfiles/Sorted_data/Sorted_by_points.csv", False)
-
-main()
+def Merge_Clear_Main():
+    Create_New_CSV("/home/dylan/Documents/StockBot/outfiles/Combiner.csv", "/home/dylan/Documents/StockBot/outfiles/Total_data.csv")
+    Clear_file("/home/dylan/Documents/StockBot/outfiles/Combiner.csv")

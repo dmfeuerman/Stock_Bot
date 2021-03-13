@@ -190,11 +190,8 @@ def Future_Time(set_time):
 
 
 
-def main():
+def Reddit_Get_Data_Main():
     Copy_site('https://www.reddit.com/r/wallstreetbets/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_WallStreetbets_output.csv")
     Copy_site('https://www.reddit.com/r/stocks/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Stocks_output.csv")
     Copy_site('https://www.reddit.com/r/StockMarket/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_StockMarket_output.csv")
     Copy_site('https://www.reddit.com/r/options/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Options_output.csv")
-
-
-main()

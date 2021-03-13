@@ -21,7 +21,7 @@ def Send_Sorted_Data():
 	msg['To'] = toaddr
 
 	# storing the subject
-	msg['Subject'] = "Newest Data"
+	msg['Subject'] = "Newest Sorted Data"
 
 	# string to store the body of the mail
 	body = "Total Files"
@@ -31,6 +31,63 @@ def Send_Sorted_Data():
 
 	# open the file to be sent
 	files = "/home/dylan/Documents/StockBot/outfiles/Sorted_data"
+
+	filenames = [os.path.join(files, f) for f in os.listdir(files)]
+
+	for file in filenames:
+		part = MIMEBase('application', 'octet-stream')
+		part.set_payload(open(file, 'rb').read())
+		encoders.encode_base64(part)
+		part.add_header('Content-Disposition', 'attachment; filename="%s"' % file)
+		msg.attach(part)
+
+	# creates SMTP session
+	s = smtplib.SMTP('smtp.gmail.com', 587)
+
+	# start TLS for security
+	s.starttls()
+
+	# Authentication
+	s.login(fromaddr, "Neekodog2299!")
+
+	# Converts the Multipart msg into a string
+	text = msg.as_string()
+
+	# sending the mail
+	s.sendmail(fromaddr, toaddr, text)
+	s.sendmail(fromaddr, toaddr2, text)
+	s.sendmail(fromaddr, toaddr3, text)
+
+	# terminating the session
+	s.quit()
+
+
+def Send_Graphs_Data():
+	fromaddr = "automationtestdmf@gmail.com"
+	toaddr = "automationtestdmf@gmail.com"
+	toaddr2 = "joshfeuerman@gmail.com"
+	toaddr3 = "pftrading17@gmail.com"
+
+	# instance of MIMEMultipart
+	msg = MIMEMultipart()
+
+	# storing the senders email address
+	msg['From'] = fromaddr
+
+	# storing the receivers email address
+	msg['To'] = toaddr
+
+	# storing the subject
+	msg['Subject'] = "Newest graphs Data"
+
+	# string to store the body of the mail
+	body = "Total Files"
+
+	# attach the body with the msg instance
+	msg.attach(MIMEText(body, 'plain'))
+
+	# open the file to be sent
+	files = "/home/dylan/Documents/StockBot/outfiles/Graphs/out_graphs"
 
 	filenames = [os.path.join(files, f) for f in os.listdir(files)]
 
@@ -111,7 +168,7 @@ def Send_out_files():
 
 	# terminating the session
 	s.quit()
-def Upload_Single_File():
+def Upload_Single_File(filename):
 	fromaddr = "automationtestdmf@gmail.com"
 	toaddr = "automationtestdmf@gmail.com"
 	#toaddr2 = "joshfeuerman@gmail.com"
@@ -127,7 +184,7 @@ def Upload_Single_File():
 	msg['To'] = toaddr
 
 	# storing the subject
-	msg['Subject'] = "Newest Data"
+	msg['Subject'] = "Newest Single File Data"
 
 	# string to store the body of the mail
 	body = "Total Files"
@@ -135,7 +192,7 @@ def Upload_Single_File():
 	# attach the body with the msg instance
 	msg.attach(MIMEText(body, 'plain'))
 
-	filename = "/home/dylan/Documents/StockBot/outfiles/Stock_data.csv"
+
 	attachment = open(filename, "rb")
 
 	# instance of MIMEBase and named as p
@@ -170,10 +227,8 @@ def Upload_Single_File():
 	# terminating the session
 	s.quit()
 
-def main():
+def Upload_Main():
 	Send_Sorted_Data()
 	Send_out_files()
-	Upload_Single_File()
-
-
-main()
+	Upload_Single_File("/home/dylan/Documents/StockBot/outfiles/Total_data.csv")
+	Upload_Single_File("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")

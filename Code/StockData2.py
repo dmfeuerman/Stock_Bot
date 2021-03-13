@@ -48,7 +48,7 @@ def Make_File(lists, stock_name, count):
         f.write("\n")
 
 
-def main():
+def Stock_Data_Main():
     Get_File()
     with open("/home/dylan/Documents/StockBot/outfiles/Combiner.csv", "r") as f:
         for stock in f:
@@ -66,5 +66,3 @@ def main():
             except IndexError:
                 continue
 
-
-main()

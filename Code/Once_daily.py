@@ -177,11 +177,11 @@ def Future_Time(set_time):
     return future
 
 
-def main():
+def Once_Daily_Main():
         Copy_site('https://www.reddit.com/r/investing/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Investing_output.csv")
         Copy_site('https://www.reddit.com/r/Forex/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Forex_output.csv")
         Copy_site('https://www.reddit.com/r/Daytrading/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_DayTrading_output.csv")
         Copy_site(' https://www.reddit.com/r/Trading/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Trading_output.csv")
         Copy_site(' https://www.reddit.com/r/IndiaInvestments/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_II_output.csv")
 
-main()
+
