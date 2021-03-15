@@ -230,5 +230,6 @@ def Upload_Single_File(filename):
 def Upload_Main():
 	Send_Sorted_Data()
 	Send_out_files()
+	Send_Graphs_Data()
 	Upload_Single_File("/home/dylan/Documents/StockBot/outfiles/Total_data.csv")
 	Upload_Single_File("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")

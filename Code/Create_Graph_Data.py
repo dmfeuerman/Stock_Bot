@@ -30,9 +30,12 @@ def Create_Graph_Data(word_list):
     fs.write("Date," + Get_Date_Time() + "\n")
 
     for item in word_list:
-        fs.write(item[0] + ",")
-        fs.write(item[1])
-        fs.write("\n")
+        try:
+            fs.write(item[0] + ",")
+            fs.write(item[1])
+            fs.write("\n")
+        except IndexError:
+            continue
 
 def Create_list(file):
     with open(file, "r") as f:

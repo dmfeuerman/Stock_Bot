@@ -29,8 +29,8 @@ def OpenSite(stock_name, count):
 
         lists = list(filter(None, lists))
         Make_File(lists, stock_name, count)
-    except HTTPError as e:
-        print(e)
+    except HTTPError:
+        var = "None"
 
 def Get_File():
     file = "/home/dylan/Documents/StockBot/outfiles/Stock_data.csv"
@@ -65,4 +65,5 @@ def Stock_Data_Main():
                         continue
             except IndexError:
                 continue
+    return True
 

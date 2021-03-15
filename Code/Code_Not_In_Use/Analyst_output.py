@@ -61,3 +61,21 @@ def main():
 	s.quit()
 
 main()
+
+hour = float(Get_Hour())
+
+Reddit_Get_Data_Main()
+Stock_Data_Main()
+if hour == 11:
+	Once_Daily_Main()
+if 7 <= hour <= 19:
+	Create_Graph_Data_Main()
+	if hour >= 11:
+		Clean_Data_Main(20, 40)
+	else:
+		Clean_Data_Main(20, 40)
+	Make_Graph()
+	Upload_Main()
+
+if hour == 0:
+	Merge_Clear_Main()

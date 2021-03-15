@@ -14,7 +14,6 @@ def Make_CSV(new_list, file):
     df.to_csv(file, index=False, header=False)
 
 def Graph_Data(file):
-    print(file)
     df = pd.read_csv(file, index_col='Date')
     df = df.T
     df.plot(legend=True)
@@ -48,21 +47,25 @@ def Make_files():
 
     list_data = CSV_To_List("/home/dylan/Documents/StockBot/outfiles/Graphs/Graph_total.csv")
     header = list_data[0]
-    list_data.pop(0)
-    new_list = []
-    count = 1
-    for val in list_data:
-        new_list.append(val)
-        graph_val = Set_Graph_File_Val(count)
-        if count == graph_val:
-            new_list.insert(0, header)
-            file = "/home/dylan/Documents/StockBot/outfiles/Graphs/out_graphs_data/graph_data_num_" + str(graph_val) + ".csv"
-            Make_CSV(new_list, file)
-            new_list = []
-        count += 1
 
-def Set_Graph_File_Val(num):
-        return math.ceil(num / 10) * 10
+    count = 1
+    list_len = len(list_data)
+    bool_val = False
+    while not bool_val:
+        plus_ten = count + 10
+        if (count + 10) >= list_len:
+            new_list = list_data[count:]
+            plus_ten = list_len
+            bool_val = True
+        else:
+            new_list = list_data[count:plus_ten]
+        new_list.insert(0, header)
+        title_val = plus_ten - 1
+        file = "/home/dylan/Documents/StockBot/outfiles/Graphs/out_graphs_data/graph_data_num_" + str(title_val) + ".csv"
+        Make_CSV(new_list, file)
+        new_list.clear()
+        count = plus_ten
+
 
 def Delete_files(folder):
     for filename in os.listdir(folder):
@@ -78,7 +81,6 @@ def Delete_files(folder):
 def Make_Graph():
     Delete_files("/home/dylan/Documents/StockBot/outfiles/Graphs/out_graphs_data")
     Delete_files("/home/dylan/Documents/StockBot/outfiles/Graphs/out_graphs")
-
+    time.sleep(2)
     Make_files()
-    time.sleep(1)
     Graph_files()

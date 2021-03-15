@@ -16,7 +16,7 @@ def Orginize_Data(index, out):
     f.close()
     df.close()
 
-def main():
+def Sort_CSV_main():
     # Stock Name
     #Orginize_Data(0, "/home/dylan/Documents/StockBot/outfiles/Sorted_data/Sorted_by_Stock_name.csv")
     # Count
@@ -28,5 +28,3 @@ def main():
     # Percent
     Orginize_Data(4, "/home/dylan/Documents/StockBot/outfiles/Sorted_data/Sorted_by_percentage.csv")
 
-
-main()
