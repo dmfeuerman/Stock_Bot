@@ -24,7 +24,7 @@ def main():
     Stock_Data_Main()
     time.sleep(5)
     Upload_Main_Unsorted()
-    if hour == 11:
+    if hour == 7:
         Once_Daily_Main()
     if 7 <= hour <= 19:
         time.sleep(5)
@@ -38,10 +38,6 @@ def main():
 
     if hour == 0:
         Merge_Clear_Main()
-
-
-
-
 
 
 main()

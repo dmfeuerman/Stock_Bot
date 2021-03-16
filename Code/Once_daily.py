@@ -183,7 +183,7 @@ def Once_Daily_Main():
         Copy_site('https://www.reddit.com/r/Daytrading/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_DayTrading_output.csv")
         Copy_site(' https://www.reddit.com/r/Trading/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Trading_output.csv")
         Copy_site(' https://www.reddit.com/r/IndiaInvestments/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_II_output.csv")
-        Copy_site('https://www.reddit.com/r/options/new/',
-                  "/home/dylan/Documents/StockBot/Data_collection/Reddit_Options_output.csv")
+        Copy_site('https://www.reddit.com/r/options/new/', "/home/dylan/Documents/StockBot/Data_collection/Reddit_Options_output.csv")
+        Copy_site("https://www.reddit.com/r/SPACs/new/", "/home/dylan/Documents/StockBot/Data_collection/Reddit_SPAC_output.csv")
 
 
